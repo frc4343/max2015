@@ -11,6 +11,6 @@ package org.usfirst.frc.team4343.robot;
  */
 public class RobotMap {
 	// DriveTrain
-	public final static byte RIGHT_MOTOR_PAIR = 1;
+	public final static byte RIGHT_MOTOR_PAIR = 0;
 	public final static byte LEFT_MOTOR_PAIR = 1;
 }

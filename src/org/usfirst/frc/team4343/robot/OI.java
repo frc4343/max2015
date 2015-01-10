@@ -4,6 +4,9 @@
  */
 package org.usfirst.frc.team4343.robot;
 
+import org.usfirst.frc.team4343.robot.controls.AxisMap;
+import org.usfirst.frc.team4343.robot.controls.ButtonMap;
+
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
@@ -40,14 +43,14 @@ public class OI {
      * @return X axis on controller 
      */
     public double getX() {
-        return ButtonMap.xbox1.getRawAxis(3);
+        return ButtonMap.xbox0.getRawAxis(AxisMap.RIGHT_TRIGGER) - ButtonMap.xbox0.getRawAxis(AxisMap.LEFT_TRIGGER); // One trigger forward, other reverse
     }
     
     /**
      * @return Y axis on controller with joystick dead zone compensation
      */
     public double getY() {
-        return Math.abs(ButtonMap.xbox1.getRawAxis(1)) >= 0.2 ? -ButtonMap.xbox1.getRawAxis(1) : 0;
+        return Math.abs(ButtonMap.xbox0.getRawAxis(AxisMap.LEFT_ANALOG_STICK_X_AXIS)) >= 0.2 ? -ButtonMap.xbox0.getRawAxis(AxisMap.LEFT_ANALOG_STICK_X_AXIS) : 0;
     }
 }
 
