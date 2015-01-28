@@ -4,6 +4,13 @@
  */
 package org.usfirst.frc.team4343.robot;
 
+import org.usfirst.frc.team4343.robot.commands.claw.ClawClose;
+import org.usfirst.frc.team4343.robot.commands.claw.ClawOpen;
+import org.usfirst.frc.team4343.robot.commands.lights.Blue;
+import org.usfirst.frc.team4343.robot.commands.lights.Green;
+import org.usfirst.frc.team4343.robot.commands.lights.Red;
+import org.usfirst.frc.team4343.robot.commands.transmission.TransmissionAscend;
+import org.usfirst.frc.team4343.robot.commands.transmission.TransmissionDescend;
 import org.usfirst.frc.team4343.robot.controls.AxisMap;
 import org.usfirst.frc.team4343.robot.controls.ButtonMap;
 
@@ -20,6 +27,13 @@ public class OI {
      */
     public OI() {
         // Xbox Controller 1 Buttons
+    	//ButtonMap.xbox0_Y.whileHeld(new TransmissionAscend());
+    	//ButtonMap.xbox0_A.whileHeld(new TransmissionDescend());
+    	ButtonMap.xbox0_R1.whileHeld(new ClawClose());
+    	ButtonMap.xbox0_L1.whileHeld(new ClawOpen());
+    	ButtonMap.xbox0_X.whenPressed(new Blue());
+    	ButtonMap.xbox0_B.whenPressed(new Red());
+    	ButtonMap.xbox0_A.whenPressed(new Green());
         /*ButtonMappings.xbox1_B.toggleWhenPressed(new ExpelBall());
         ButtonMappings.xbox1_Y.toggleWhenPressed(new PickupBallSequence());
         ButtonMappings.xbox1_A.whenPressed(new FireAndReloadSequence());

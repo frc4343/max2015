@@ -9,7 +9,10 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
+import org.usfirst.frc.team4343.robot.subsystems.Claw;
 import org.usfirst.frc.team4343.robot.subsystems.DriveTrain;
+import org.usfirst.frc.team4343.robot.subsystems.Lights;
+import org.usfirst.frc.team4343.robot.subsystems.Transmission;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -25,6 +28,10 @@ import org.usfirst.frc.team4343.robot.subsystems.DriveTrain;
 public class Robot extends IterativeRobot {
 
 	public static final DriveTrain driveTrain = new DriveTrain();
+	public static final Transmission transmission = new Transmission();
+	public static final Claw claw = new Claw();
+	public static final Lights lights = new Lights();
+	
 	public static OI oi;
 
 	Command autonomousCommand;
