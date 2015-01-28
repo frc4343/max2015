@@ -1,3 +1,7 @@
+/*
+ * FRC Team 4343
+ * Visit us at www.4343.ca
+ */
 package org.usfirst.frc.team4343.robot.commands.transmission;
 
 import org.usfirst.frc.team4343.robot.Robot;
@@ -5,7 +9,9 @@ import org.usfirst.frc.team4343.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * Transmission Ascend Command
+ * 
+ * @author Brian Ho <www.4343.ca>
  */
 public class TransmissionAscend extends Command {
 

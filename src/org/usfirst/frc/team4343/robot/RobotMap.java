@@ -21,4 +21,8 @@ public class RobotMap {
 	public final static byte RED_LED_PORT = 1;
 	public final static byte GREEN_LED_PORT = 2;
 	public final static byte BLUE_LED_PORT = 3;
+	
+	// CAN IDs
+	public final static byte PDP = 0;
+	public final static byte PCM = 1;
 }

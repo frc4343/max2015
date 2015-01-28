@@ -1,5 +1,10 @@
 package org.usfirst.frc.team4343.robot.controls;
 
+/**
+ * Controller Axis Mappings
+ * 
+ * @author Brian Ho <www.4343.ca>
+ */
 public class AxisMap {
 	// Controller Axis
 	public static final byte LEFT_ANALOG_STICK_X_AXIS = 0;

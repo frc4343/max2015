@@ -1,3 +1,7 @@
+/*
+ * FRC Team 4343
+ * Visit us at www.4343.ca
+ */
 package org.usfirst.frc.team4343.robot.subsystems;
 
 import org.usfirst.frc.team4343.robot.RobotMap;
@@ -6,7 +10,9 @@ import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
- *
+ * LED Subsystem
+ * 
+ * @author Brian Ho <www.4343.ca>
  */
 public class Lights extends Subsystem {
     
@@ -15,8 +21,6 @@ public class Lights extends Subsystem {
     private final Solenoid blue = new Solenoid(1, RobotMap.BLUE_LED_PORT);
 
     public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new Blink());
     }
  
     /**

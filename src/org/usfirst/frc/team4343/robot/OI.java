@@ -26,7 +26,7 @@ public class OI {
      * This is where buttons are assigned a command
      */
     public OI() {
-        // Xbox Controller 1 Buttons
+        // Xbox Controller 0 Buttons
     	//ButtonMap.xbox0_Y.whileHeld(new TransmissionAscend());
     	//ButtonMap.xbox0_A.whileHeld(new TransmissionDescend());
     	ButtonMap.xbox0_R1.whileHeld(new ClawClose());
@@ -34,23 +34,6 @@ public class OI {
     	ButtonMap.xbox0_X.whenPressed(new Blue());
     	ButtonMap.xbox0_B.whenPressed(new Red());
     	ButtonMap.xbox0_A.whenPressed(new Green());
-        /*ButtonMappings.xbox1_B.toggleWhenPressed(new ExpelBall());
-        ButtonMappings.xbox1_Y.toggleWhenPressed(new PickupBallSequence());
-        ButtonMappings.xbox1_A.whenPressed(new FireAndReloadSequence());
-        ButtonMappings.xbox1_X.whenPressed(new TransmissionDoNothing());
-        ButtonMappings.xbox1_R1.whenPressed(new FireSequence());
-        ButtonMappings.xbox1_L1.whenPressed(new PullDownLauncherSequence());
-        ButtonMappings.xbox1_START.whileHeld(new VisionTest());
-        
-        // Xbox Controller 2 Buttons
-        ButtonMappings.xbox2_X.whenPressed(new TransmissionDoNothing());
-        ButtonMappings.xbox2_A.whenPressed(new FireSequence()); //
-        ButtonMappings.xbox2_B.whenPressed(new PullDownLauncherSequence());
-        ButtonMappings.xbox2_R1.whenPressed(new ExtendArm());
-        ButtonMappings.xbox2_L1.whenPressed(new RetractArm());
-        ButtonMappings.xbox2_START.whileHeld(new VisionTest());
-        */
-        
     }
     
     /**
