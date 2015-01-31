@@ -16,6 +16,7 @@ public class DriveWithJoystick extends Command {
 
 	public DriveWithJoystick() {
 		requires(Robot.driveTrain);
+		requires(Robot.gyro);
 	}
 
 	/**
@@ -30,6 +31,7 @@ public class DriveWithJoystick extends Command {
 	 */
 	protected void execute() {
 		Robot.driveTrain.arcadeDrive(Robot.oi.getX(), Robot.oi.getY());
+		System.out.println(Robot.gyro.getAngle());
 	}
 
 	/**

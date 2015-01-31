@@ -4,11 +4,9 @@
  */
 package org.usfirst.frc.team4343.robot;
 
+import org.usfirst.frc.team4343.robot.commands.EncoderTest;
 import org.usfirst.frc.team4343.robot.commands.claw.ClawClose;
 import org.usfirst.frc.team4343.robot.commands.claw.ClawOpen;
-import org.usfirst.frc.team4343.robot.commands.lights.Blue;
-import org.usfirst.frc.team4343.robot.commands.lights.Green;
-import org.usfirst.frc.team4343.robot.commands.lights.Red;
 import org.usfirst.frc.team4343.robot.commands.transmission.TransmissionAscend;
 import org.usfirst.frc.team4343.robot.commands.transmission.TransmissionDescend;
 import org.usfirst.frc.team4343.robot.controls.AxisMap;
@@ -27,13 +25,11 @@ public class OI {
      */
     public OI() {
         // Xbox Controller 0 Buttons
-    	//ButtonMap.xbox0_Y.whileHeld(new TransmissionAscend());
-    	//ButtonMap.xbox0_A.whileHeld(new TransmissionDescend());
     	ButtonMap.xbox0_R1.whileHeld(new ClawClose());
     	ButtonMap.xbox0_L1.whileHeld(new ClawOpen());
-    	ButtonMap.xbox0_X.whenPressed(new Blue());
-    	ButtonMap.xbox0_B.whenPressed(new Red());
-    	ButtonMap.xbox0_A.whenPressed(new Green());
+    	ButtonMap.xbox0_A.whenPressed(new TransmissionAscend());
+    	ButtonMap.xbox0_Y.whenPressed(new TransmissionDescend());
+    	ButtonMap.xbox0_B.whenPressed(new EncoderTest());
     }
     
     /**

@@ -22,11 +22,10 @@ public class RobotMap {
 	public final static byte GREEN_LED_PORT = 2;
 	public final static byte BLUE_LED_PORT = 3;
 	
+	// ANALOG INPUT
+	public final static byte GYRO_SENSOR_PORT = 0;
+	
 	// CAN IDs
 	public final static byte PDP = 0;
 	public final static byte PCM = 1;
-	
-	// Pneumatics
-	public final static byte EXTEND_PISTONS_PORT = 0;
-	public final static byte RETRACT_PISTONS_PORT = 1;
 }

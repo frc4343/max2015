@@ -9,8 +9,11 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
+import org.usfirst.frc.team4343.robot.commands.autonomous.Auto;
 import org.usfirst.frc.team4343.robot.subsystems.Claw;
 import org.usfirst.frc.team4343.robot.subsystems.DriveTrain;
+import org.usfirst.frc.team4343.robot.subsystems.EncoderTest;
+import org.usfirst.frc.team4343.robot.subsystems.GyroSubsystem;
 import org.usfirst.frc.team4343.robot.subsystems.Lights;
 import org.usfirst.frc.team4343.robot.subsystems.Transmission;
 
@@ -31,6 +34,8 @@ public class Robot extends IterativeRobot {
 	public static final Transmission transmission = new Transmission();
 	public static final Claw claw = new Claw();
 	public static final Lights lights = new Lights();
+	public static final EncoderTest encoderTest = new EncoderTest();
+	public static final GyroSubsystem gyro = new GyroSubsystem();
 	
 	public static OI oi;
 
@@ -43,7 +48,7 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		oi = new OI();
 		// instantiate the command used for the autonomous period
-		// autonomousCommand = new ExampleCommand();
+		autonomousCommand = new Auto();
 	}
 
 	public void disabledPeriodic() {
