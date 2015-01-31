@@ -1,6 +1,11 @@
+/*
+ * FRC Team 4343
+ * Visit us at www.4343.ca
+ */
 package org.usfirst.frc.team4343.robot.subsystems;
 
 import org.usfirst.frc.team4343.robot.RobotMap;
+import org.usfirst.frc.team4343.robot.commands.gyro.PrintAngle;
 
 import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -19,7 +24,7 @@ public class GyroSubsystem extends Subsystem {
     * Always display current angle value
     */
    public void initDefaultCommand() {
-       
+	   setDefaultCommand(new PrintAngle());
    }
    
    /**

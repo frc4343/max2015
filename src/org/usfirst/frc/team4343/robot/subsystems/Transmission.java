@@ -28,7 +28,7 @@ public class Transmission extends Subsystem {
     }
     
     /**
-     * Raise the arm
+     * Raises the arm
      */
     public void ascend() {
     	motor.set(1);

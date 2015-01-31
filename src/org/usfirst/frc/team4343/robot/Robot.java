@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 import org.usfirst.frc.team4343.robot.commands.autonomous.Auto;
+import org.usfirst.frc.team4343.robot.subsystems.AccelerometerSubsystem;
 import org.usfirst.frc.team4343.robot.subsystems.Claw;
 import org.usfirst.frc.team4343.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team4343.robot.subsystems.EncoderTest;
@@ -36,6 +37,7 @@ public class Robot extends IterativeRobot {
 	public static final Lights lights = new Lights();
 	public static final EncoderTest encoderTest = new EncoderTest();
 	public static final GyroSubsystem gyro = new GyroSubsystem();
+	public static final AccelerometerSubsystem accelerometer = new AccelerometerSubsystem();
 	
 	public static OI oi;
 

@@ -11,11 +11,11 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class Auto extends CommandGroup {
     
     public  Auto() {
-    	addSequential(new TurnWithGyro(-0.8));
+    	addSequential(new TurnWithGyro(0.5, -0.8));
     	addSequential(new DriveWithTimer(-1, 0.25));
-    	addSequential(new TurnWithGyro(0.35));
+    	addSequential(new TurnWithGyro(0.5, 0.35));
     	addSequential(new DriveWithTimer(-1, 0.50));
-    	addSequential(new TurnWithGyro(0.01));
+    	addSequential(new TurnWithGyro(0.5, "RIGHT"));
     	
     	// Add Commands here:
         // e.g. addSequential(new Command1());

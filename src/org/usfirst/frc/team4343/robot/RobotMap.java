@@ -24,6 +24,7 @@ public class RobotMap {
 	
 	// ANALOG INPUT
 	public final static byte GYRO_SENSOR_PORT = 0;
+	public final static byte ACCELEROMETER_PORT =1;
 	
 	// CAN IDs
 	public final static byte PDP = 0;

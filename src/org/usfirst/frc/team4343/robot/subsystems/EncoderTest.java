@@ -1,3 +1,7 @@
+/*
+ * FRC Team 4343
+ * Visit us at www.4343.ca
+ */
 package org.usfirst.frc.team4343.robot.subsystems;
 
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
@@ -10,9 +14,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class EncoderTest extends Subsystem {
-    
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
+
 	private final Encoder encoder = new Encoder(1,2, true, EncodingType.k4X);
 	private final SpeedController motor = new Victor(6);
 	

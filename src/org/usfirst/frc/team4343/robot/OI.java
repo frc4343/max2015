@@ -9,8 +9,8 @@ import org.usfirst.frc.team4343.robot.commands.claw.ClawClose;
 import org.usfirst.frc.team4343.robot.commands.claw.ClawOpen;
 import org.usfirst.frc.team4343.robot.commands.transmission.TransmissionAscend;
 import org.usfirst.frc.team4343.robot.commands.transmission.TransmissionDescend;
-import org.usfirst.frc.team4343.robot.controls.AxisMap;
-import org.usfirst.frc.team4343.robot.controls.ButtonMap;
+import org.usfirst.frc.team4343.robot.joystick.AxisMap;
+import org.usfirst.frc.team4343.robot.joystick.ButtonMap;
 
 /**
  * This class is the glue that binds the controls on the physical operator

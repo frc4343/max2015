@@ -5,7 +5,7 @@
 package org.usfirst.frc.team4343.robot.subsystems;
 
 import org.usfirst.frc.team4343.robot.RobotMap;
-import org.usfirst.frc.team4343.robot.commands.DriveWithJoystick;
+import org.usfirst.frc.team4343.robot.commands.drivetrain.DriveWithJoystick;
 
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
