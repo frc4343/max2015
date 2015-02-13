@@ -31,6 +31,17 @@ public class ButtonMap {
 	public static final Button xbox0_L1 = new JoystickButton(xbox0, 5);
 	public static final Button xbox0_R1 = new JoystickButton(xbox0, 6);
 
+	// DPAD on joystick 0
+	public static final short xbox0_DPAD_CENTRE = -1;
+	public static final short xbox0_DPAD_N = 0;
+	public static final short xbox0_DPAD_NE = 45;
+	public static final short xbox0_DPAD_E = 90;
+	public static final short xbox0_DPAD_SE = 135;
+	public static final short xbox0_DPAD_S = 180;
+	public static final short xbox0_DPAD_SW = 225;
+	public static final short xbox0_DPAD_W = 270;
+	public static final short xbox0_DPAD_NW = 315;
+
 	// Buttons on joystick 1
 	public static final Button xbox1_A = new JoystickButton(xbox1, 1);
 	public static final Button xbox1_B = new JoystickButton(xbox1, 2);
@@ -42,4 +53,15 @@ public class ButtonMap {
 	public static final Button xbox1_SELECT = new JoystickButton(xbox1, 7);
 	public static final Button xbox1_L1 = new JoystickButton(xbox1, 5);
 	public static final Button xbox1_R1 = new JoystickButton(xbox1, 6);
+
+	// DPAD on joystick 1
+	public static final short xbox1_DPAD_CENTRE = -1;
+	public static final short xbox1_DPAD_N = 0;
+	public static final short xbox1_DPAD_NE = 45;
+	public static final short xbox1_DPAD_E = 90;
+	public static final short xbox1_DPAD_SE = 135;
+	public static final short xbox1_DPAD_S = 180;
+	public static final short xbox1_DPAD_SW = 225;
+	public static final short xbox1_DPAD_W = 270;
+	public static final short xbox1_DPAD_NW = 315;
 }

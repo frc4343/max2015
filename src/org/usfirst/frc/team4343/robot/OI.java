@@ -14,6 +14,7 @@ import org.usfirst.frc.team4343.robot.joystick.AxisMap;
 import org.usfirst.frc.team4343.robot.joystick.ButtonMap;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.Joystick.RumbleType;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -60,6 +61,23 @@ public class OI {
     
     public double getRightJoystickHorizontalAxis(Joystick controller) { 
     	return Math.abs(controller.getRawAxis(AxisMap.RIGHT_ANALOG_STICK_X_AXIS)) >= 0.2 ? -controller.getRawAxis(AxisMap.RIGHT_ANALOG_STICK_X_AXIS) : 0; 
+    }
+    
+    /**
+     * Returns angle in degrees, -1 for centre position
+     */
+    public short getDPad() {
+    	return (short) ButtonMap.xbox0.getPOV(AxisMap.DPAD);
+    }
+    
+    public void setRumble(Joystick joystick, RumbleType type, boolean state) {
+    	float value;
+    	if (state) {
+    		value = 1;
+    	} else {
+    		value = 0;
+    	}
+    	joystick.setRumble(type, value);
     }
 }
 

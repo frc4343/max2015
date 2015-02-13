@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import org.usfirst.frc.team4343.robot.commands.Alt;
+import org.usfirst.frc.team4343.robot.commands.autonomous.Alt;
 import org.usfirst.frc.team4343.robot.commands.autonomous.Auto;
 import org.usfirst.frc.team4343.robot.commands.autonomous.Middle;
 import org.usfirst.frc.team4343.robot.commands.autonomous.ReverseWithContainer;

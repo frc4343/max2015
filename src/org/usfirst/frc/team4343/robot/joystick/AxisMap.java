@@ -7,6 +7,7 @@ package org.usfirst.frc.team4343.robot.joystick;
  */
 public class AxisMap {
 	// Controller Axis
+	public static final byte DPAD = 0;
 	public static final byte LEFT_ANALOG_STICK_X_AXIS = 0;
 	public static final byte LEFT_ANALOG_STICK_Y_AXIS = 1;
 	public static final byte LEFT_TRIGGER = 2;
