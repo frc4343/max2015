@@ -5,12 +5,13 @@
 package org.usfirst.frc.team4343.robot.subsystems;
 
 import org.usfirst.frc.team4343.robot.RobotMap;
-import org.usfirst.frc.team4343.robot.commands.gyro.PrintAngle;
+//import org.usfirst.frc.team4343.robot.commands.gyro.PrintAngle;
 
 import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
+* Gyro Subsystem
 *
 * @author Brian Ho <www.4343.ca>
 * @author Tedi Papajorgji <www.4343.ca>

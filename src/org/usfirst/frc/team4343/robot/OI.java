@@ -4,15 +4,16 @@
  */
 package org.usfirst.frc.team4343.robot;
 
-import org.usfirst.frc.team4343.robot.commands.EncoderTest;
 import org.usfirst.frc.team4343.robot.commands.claw.ClawClose;
 import org.usfirst.frc.team4343.robot.commands.claw.ClawOpen;
 import org.usfirst.frc.team4343.robot.commands.drivetrain.DriveFullSpeedWithJoystick;
-import org.usfirst.frc.team4343.robot.commands.drivetrain.DriveWithJoystick;
+import org.usfirst.frc.team4343.robot.commands.drivetrain.ArcadeTriggerDriveWithJoystick;
 import org.usfirst.frc.team4343.robot.commands.transmission.TransmissionAscend;
 import org.usfirst.frc.team4343.robot.commands.transmission.TransmissionDescend;
 import org.usfirst.frc.team4343.robot.joystick.AxisMap;
 import org.usfirst.frc.team4343.robot.joystick.ButtonMap;
+
+import edu.wpi.first.wpilibj.Joystick;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -27,45 +28,38 @@ public class OI {
      */
     public OI() {
         // Xbox Controller 0 Buttons
-    	ButtonMap.xbox0_Y.whileHeld(new TransmissionAscend()); // changed whenPressed to whileHeld
-    	ButtonMap.xbox0_A.whileHeld(new TransmissionDescend()); // change whenPressed to whileHeld
-    	ButtonMap.xbox0_R1.whenPressed(new ClawClose()); // changed whileHeld to whenPressed
-    	ButtonMap.xbox0_L1.whenPressed(new ClawOpen());  // changed whileHeld to whenPressed
+    	ButtonMap.xbox0_Y.whileHeld(new TransmissionAscend());
+    	ButtonMap.xbox0_A.whileHeld(new TransmissionDescend());
+    	ButtonMap.xbox0_R1.whenPressed(new ClawClose());
+    	ButtonMap.xbox0_L1.whenPressed(new ClawOpen());
     	
     	// Drive Commands
     	ButtonMap.xbox0_B.whileHeld(new DriveFullSpeedWithJoystick());
-        ButtonMap.xbox0_B.whenReleased(new DriveWithJoystick());
+        ButtonMap.xbox0_B.whenReleased(new ArcadeTriggerDriveWithJoystick());
     	
     	// Xbox Controller 1 Buttons
-    	ButtonMap.xbox1_R1.whenPressed(new ClawClose()); // changed whileHeld to whenPressed
-    	ButtonMap.xbox1_L1.whenPressed(new ClawOpen());  // changed whileHeld to whenPressed
-    	ButtonMap.xbox1_Y.whileHeld(new TransmissionAscend()); // changed whenPressed to whileHeld
-    	ButtonMap.xbox1_A.whileHeld(new TransmissionDescend()); // change whenPressed to whileHeld
-    	//ButtonMap.xbox0_B.whenPressed(new EncoderTest());
+    	ButtonMap.xbox1_R1.whenPressed(new ClawClose());
+    	ButtonMap.xbox1_L1.whenPressed(new ClawOpen()); 
+    	ButtonMap.xbox1_Y.whileHeld(new TransmissionAscend()); 
+    	ButtonMap.xbox1_A.whileHeld(new TransmissionDescend()); 
     }
-
-
      
     /**
-     * @return X axis on controller 
+     * @return X axis on controller 0
      */
-    public double getDriveX() {
+    public double getForwardBackwardDriveSpeedFromTriggers() {
         return ButtonMap.xbox0.getRawAxis(AxisMap.RIGHT_TRIGGER) - ButtonMap.xbox0.getRawAxis(AxisMap.LEFT_TRIGGER); // One trigger forward, other reverse
     }
     
     /**
      * @return Y axis on controller with joystick dead zone compensation
      */
-    public double getDriveY() {
-        return Math.abs(ButtonMap.xbox0.getRawAxis(AxisMap.LEFT_ANALOG_STICK_X_AXIS)) >= 0.2 ? -ButtonMap.xbox0.getRawAxis(AxisMap.LEFT_ANALOG_STICK_X_AXIS) : 0;
+    public double getLeftJoystickHorizontalAxis(Joystick controller) {
+        return Math.abs(controller.getRawAxis(AxisMap.LEFT_ANALOG_STICK_X_AXIS)) >= 0.2 ? -controller.getRawAxis(AxisMap.LEFT_ANALOG_STICK_X_AXIS) : 0;
     }
     
-    public double getLeftJoystickX() {
-    	return Math.abs(ButtonMap.xbox1.getRawAxis(AxisMap.LEFT_ANALOG_STICK_X_AXIS)) >= 0.2 ? -ButtonMap.xbox1.getRawAxis(AxisMap.LEFT_ANALOG_STICK_X_AXIS) : 0;
-    }
-    
-    public double getRightJoystickX() {
-    	return Math.abs(ButtonMap.xbox1.getRawAxis(AxisMap.RIGHT_ANALOG_STICK_X_AXIS)) >= 0.2 ? -ButtonMap.xbox1.getRawAxis(AxisMap.RIGHT_ANALOG_STICK_X_AXIS) : 0; 
+    public double getRightJoystickHorizontalAxis(Joystick controller) { 
+    	return Math.abs(controller.getRawAxis(AxisMap.RIGHT_ANALOG_STICK_X_AXIS)) >= 0.2 ? -controller.getRawAxis(AxisMap.RIGHT_ANALOG_STICK_X_AXIS) : 0; 
     }
 }
 

@@ -5,7 +5,7 @@ import org.usfirst.frc.team4343.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * @author Brian Ho <www.4343.ca>
  */
 public class PrintAngle extends Command {
 

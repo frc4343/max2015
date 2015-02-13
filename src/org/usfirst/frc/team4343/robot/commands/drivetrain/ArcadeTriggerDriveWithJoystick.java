@@ -5,6 +5,8 @@
 package org.usfirst.frc.team4343.robot.commands.drivetrain;
 
 import org.usfirst.frc.team4343.robot.Robot;
+import org.usfirst.frc.team4343.robot.joystick.ButtonMap;
+
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -12,8 +14,8 @@ import edu.wpi.first.wpilibj.command.Command;
  * @author Brian Ho <www.4343.ca>
  * @author Tedi Papajorgji <www.4343.ca>
  */
-public class DriveWithJoystick extends Command {
-	public DriveWithJoystick() {
+public class ArcadeTriggerDriveWithJoystick extends Command {
+	public ArcadeTriggerDriveWithJoystick() {
 		requires(Robot.driveTrain);
 	}
 
@@ -28,8 +30,7 @@ public class DriveWithJoystick extends Command {
 	 * drive robot
 	 */
 	protected void execute() {
-		Robot.driveTrain.slowDrive(Robot.oi.getDriveX(), Robot.oi.getDriveY());
-
+		Robot.driveTrain.slowDrive(Robot.oi.getForwardBackwardDriveSpeedFromTriggers(), Robot.oi.getLeftJoystickHorizontalAxis(ButtonMap.xbox0));
 	}
 
 	/**

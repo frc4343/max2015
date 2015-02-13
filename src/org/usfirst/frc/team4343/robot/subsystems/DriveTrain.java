@@ -5,9 +5,7 @@
 package org.usfirst.frc.team4343.robot.subsystems;
 
 import org.usfirst.frc.team4343.robot.RobotMap;
-import org.usfirst.frc.team4343.robot.commands.drivetrain.DriveWithJoystick;
-import org.usfirst.frc.team4343.robot.commands.drivetrain.TurnWithGyro;
-import org.usfirst.frc.team4343.robot.joystick.ButtonMap;
+import org.usfirst.frc.team4343.robot.commands.drivetrain.ArcadeTriggerDriveWithJoystick;
 
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -17,12 +15,12 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * @author Tedi Papajorgji <www.4343.ca>
  */
 public class DriveTrain extends Subsystem {
-	private boolean isFirstEnable = true;
+	private boolean isFirstEnable = true; // by default this is true (when robot first turns on or enables)
     private final RobotDrive chassis = new RobotDrive(RobotMap.RIGHT_MOTOR_PAIR, RobotMap.LEFT_MOTOR_PAIR);
     
     public void initDefaultCommand() {
     	if (isFirstEnable) {
-    		setDefaultCommand(new DriveWithJoystick());
+    		setDefaultCommand(new ArcadeTriggerDriveWithJoystick());
     		isFirstEnable = false;
     	}
     }
@@ -33,13 +31,13 @@ public class DriveTrain extends Subsystem {
      * @param right How much power to apply to right motor pairs
      */
     public void tankDrive(double left, double right) {
-        chassis.tankDrive(-((left*left*left)), -((right*right*right)));
+        chassis.tankDrive(-left, -right);
     }
     
     /**
-     * Drive the robot using arcade style
+     * Drive the robot using arcade style with half speed
      * @param x Forward and backwards speed
-     * @param y Rotation speed 
+     * @param y Left, Right Rotation speed 
      */
     public void slowDrive(double x, double y) {
     	chassis.arcadeDrive(-x/2, y/2);
@@ -48,16 +46,13 @@ public class DriveTrain extends Subsystem {
     	//chassis.arcadeDrive(-x, y);
     }
     
+    /**
+     * Drive the robot using arcade style with full speed
+     * @param x Forward and backwards speed
+     * @param y Left, Right Rotation speed 
+     */
     public void fullSpeedDrive(double x, double y) {
     	chassis.arcadeDrive(-x, y);
-    }
-    
-    /**
-     * Disable motor safety, stops 'Robot drive not updated enough...' error
-     * @param value Either true or false. 'True' to enable safety and 'False' to disable
-     */
-    public void toggleSafety(boolean value) {
-        chassis.setSafetyEnabled(value);
     }
 }
 

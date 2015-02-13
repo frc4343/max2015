@@ -1,11 +1,16 @@
+/*
+ * FRC Team 4343
+ * Visit us at www.4343.ca
+ */
 package org.usfirst.frc.team4343.robot.commands.drivetrain;
 
 import org.usfirst.frc.team4343.robot.Robot;
+import org.usfirst.frc.team4343.robot.joystick.ButtonMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * @author Brian Ho <www.4343.ca>
  */
 public class DriveFullSpeedWithJoystick extends Command {
 
@@ -19,7 +24,7 @@ public class DriveFullSpeedWithJoystick extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.driveTrain.fullSpeedDrive(Robot.oi.getDriveX(), Robot.oi.getDriveY());
+    	Robot.driveTrain.fullSpeedDrive(Robot.oi.getForwardBackwardDriveSpeedFromTriggers(), Robot.oi.getLeftJoystickHorizontalAxis(ButtonMap.xbox0));
     }
 
     // Make this return true when this Command no longer needs to run execute()

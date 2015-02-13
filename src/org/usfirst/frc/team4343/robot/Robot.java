@@ -15,7 +15,6 @@ import org.usfirst.frc.team4343.robot.commands.Alt;
 import org.usfirst.frc.team4343.robot.commands.autonomous.Auto;
 import org.usfirst.frc.team4343.robot.commands.autonomous.Middle;
 import org.usfirst.frc.team4343.robot.commands.autonomous.ReverseWithContainer;
-import org.usfirst.frc.team4343.robot.commands.autonomous.Spin;
 import org.usfirst.frc.team4343.robot.commands.autonomous.TurnAndGo;
 import org.usfirst.frc.team4343.robot.commands.autonomous.FasterAuto;
 import org.usfirst.frc.team4343.robot.subsystems.Claw;
@@ -23,7 +22,7 @@ import org.usfirst.frc.team4343.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team4343.robot.subsystems.EncoderTest;
 import org.usfirst.frc.team4343.robot.subsystems.GyroSubsystem;
 import org.usfirst.frc.team4343.robot.subsystems.Lights;
-import org.usfirst.frc.team4343.robot.subsystems.Roller;
+import org.usfirst.frc.team4343.robot.subsystems.FrontRollers;
 import org.usfirst.frc.team4343.robot.subsystems.Transmission;
 
 /**
@@ -39,13 +38,13 @@ import org.usfirst.frc.team4343.robot.subsystems.Transmission;
 
 public class Robot extends IterativeRobot {
 
-	public static final DriveTrain driveTrain = new DriveTrain();
-	public static final Transmission transmission = new Transmission();
-	public static final Claw claw = new Claw();
-	public static final Lights lights = new Lights();
-	public static final EncoderTest encoderTest = new EncoderTest();
-	public static final GyroSubsystem gyro = new GyroSubsystem();
-	public static final Roller roller = new Roller();
+	public static DriveTrain driveTrain;
+	public static Transmission transmission;
+	public static Claw claw;
+	public static Lights lights;
+	public static EncoderTest encoderTest;
+	public static GyroSubsystem gyro;
+	public static FrontRollers roller;
 
 	public static OI oi;
 
@@ -57,13 +56,21 @@ public class Robot extends IterativeRobot {
 	 * used for any initialization code.
 	 */
 	public void robotInit() {
+		// Initialize Subsystems
+		driveTrain = new DriveTrain();
+		transmission = new Transmission();
+		claw = new Claw();
+		lights = new Lights();
+		encoderTest = new EncoderTest();
+		gyro = new GyroSubsystem();
+		roller = new FrontRollers();
 		oi = new OI();
 		// instantiate the command used for the autonomous period
 		autonomousChooser = new SendableChooser();
 		autonomousChooser.addDefault("Slow Auto", new Auto());
 		autonomousChooser.addObject("Fast Auto", new FasterAuto());
 		autonomousChooser.addObject("Turn and Go (1 Container and 1 Tote)", new TurnAndGo());
-		autonomousChooser.addObject("Reverse with Container (Any Position)", new ReverseWithContainer());
+		autonomousChooser.addObject("Reverse with Container (Any Position)",new ReverseWithContainer());
 		autonomousChooser.addObject("Start Centre Behind Totes", new Middle());
 		autonomousChooser.addObject("ALT", new Alt());
 		SmartDashboard.putData("Autonomous Mode Chooser", autonomousChooser);
