@@ -5,7 +5,9 @@
 package org.usfirst.frc.team4343.robot.subsystems;
 
 import org.usfirst.frc.team4343.robot.RobotMap;
-import org.usfirst.frc.team4343.robot.commands.DriveWithJoystick;
+import org.usfirst.frc.team4343.robot.commands.drivetrain.DriveWithJoystick;
+import org.usfirst.frc.team4343.robot.commands.drivetrain.TurnWithGyro;
+import org.usfirst.frc.team4343.robot.joystick.ButtonMap;
 
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -15,11 +17,14 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * @author Tedi Papajorgji <www.4343.ca>
  */
 public class DriveTrain extends Subsystem {
-	
+	private boolean isFirstEnable = true;
     private final RobotDrive chassis = new RobotDrive(RobotMap.RIGHT_MOTOR_PAIR, RobotMap.LEFT_MOTOR_PAIR);
     
     public void initDefaultCommand() {
-        setDefaultCommand(new DriveWithJoystick());
+    	if (isFirstEnable) {
+    		setDefaultCommand(new DriveWithJoystick());
+    		isFirstEnable = false;
+    	}
     }
     
     /**
@@ -28,7 +33,7 @@ public class DriveTrain extends Subsystem {
      * @param right How much power to apply to right motor pairs
      */
     public void tankDrive(double left, double right) {
-        chassis.tankDrive(left, right);
+        chassis.tankDrive(-((left*left*left)), -((right*right*right)));
     }
     
     /**
@@ -36,8 +41,15 @@ public class DriveTrain extends Subsystem {
      * @param x Forward and backwards speed
      * @param y Rotation speed 
      */
-    public void arcadeDrive(double x, double y) {
-        chassis.arcadeDrive(x, y);
+    public void slowDrive(double x, double y) {
+    	chassis.arcadeDrive(-x/2, y/2);
+    	//chassis.arcadeDrive(-(x)/1.7, (y)/1.7);        
+        //chassis.arcadeDrive(-(x*x*x)/2, (y*y*y)/2);
+    	//chassis.arcadeDrive(-x, y);
+    }
+    
+    public void fullSpeedDrive(double x, double y) {
+    	chassis.arcadeDrive(-x, y);
     }
     
     /**

@@ -2,7 +2,7 @@
  * FRC Team 4343
  * Visit us at www.4343.ca
  */
-package org.usfirst.frc.team4343.robot.commands;
+package org.usfirst.frc.team4343.robot.commands.drivetrain;
 
 import org.usfirst.frc.team4343.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -13,7 +13,6 @@ import edu.wpi.first.wpilibj.command.Command;
  * @author Tedi Papajorgji <www.4343.ca>
  */
 public class DriveWithJoystick extends Command {
-
 	public DriveWithJoystick() {
 		requires(Robot.driveTrain);
 	}
@@ -29,7 +28,8 @@ public class DriveWithJoystick extends Command {
 	 * drive robot
 	 */
 	protected void execute() {
-		Robot.driveTrain.arcadeDrive(Robot.oi.getX(), Robot.oi.getY());
+		Robot.driveTrain.slowDrive(Robot.oi.getDriveX(), Robot.oi.getDriveY());
+
 	}
 
 	/**

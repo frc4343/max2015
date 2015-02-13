@@ -7,6 +7,7 @@ package org.usfirst.frc.team4343.robot.subsystems;
 import org.usfirst.frc.team4343.robot.RobotMap;
 import org.usfirst.frc.team4343.robot.commands.transmission.TransmissionDoNothing;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -19,6 +20,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class Transmission extends Subsystem {
 	
 	private final SpeedController motor = new Victor(RobotMap.TRANSMISSION_PAIR);
+	private final DigitalInput maxHeightLimitSwitch = new DigitalInput(RobotMap.MAX_HEIGHT_LIMIT_SWITCH_PORT);
+	private final DigitalInput minHeightLimitSwitch = new DigitalInput(RobotMap.MIN_HEIGHT_LIMIT_SWITCH_PORT);
 	
 	/**
 	 * By default, when no buttons are pressed, we want the transmission to stop
@@ -28,7 +31,7 @@ public class Transmission extends Subsystem {
     }
     
     /**
-     * Raise the arm
+     * Raises the arm
      */
     public void ascend() {
     	motor.set(1);
@@ -46,6 +49,20 @@ public class Transmission extends Subsystem {
      */
     public void stop() {
     	motor.set(0);
+    }
+    
+    /**
+     * True if transmission is at max height
+     */
+    public boolean isMaxHeight() {
+    	return !maxHeightLimitSwitch.get();
+    }
+    
+    /**
+     * True if transmission is at min height
+     */
+    public boolean isMinHeight() {
+    	return !minHeightLimitSwitch.get();
     }
 }
 

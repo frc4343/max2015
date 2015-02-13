@@ -16,9 +16,9 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Lights extends Subsystem {
     
-    private final Solenoid red = new Solenoid(1, RobotMap.RED_LED_PORT);
-    private final Solenoid green = new Solenoid(1, RobotMap.GREEN_LED_PORT);
-    private final Solenoid blue = new Solenoid(1, RobotMap.BLUE_LED_PORT);
+    private final Solenoid red = new Solenoid(RobotMap.PCM_CANID, RobotMap.RED_LED_PORT);
+    private final Solenoid green = new Solenoid(RobotMap.PCM_CANID, RobotMap.GREEN_LED_PORT);
+    private final Solenoid blue = new Solenoid(RobotMap.PCM_CANID, RobotMap.BLUE_LED_PORT);
 
     public void initDefaultCommand() {
     }

@@ -8,10 +8,22 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc.team4343.robot.commands.Alt;
+import org.usfirst.frc.team4343.robot.commands.autonomous.Auto;
+import org.usfirst.frc.team4343.robot.commands.autonomous.Middle;
+import org.usfirst.frc.team4343.robot.commands.autonomous.ReverseWithContainer;
+import org.usfirst.frc.team4343.robot.commands.autonomous.Spin;
+import org.usfirst.frc.team4343.robot.commands.autonomous.TurnAndGo;
+import org.usfirst.frc.team4343.robot.commands.autonomous.FasterAuto;
 import org.usfirst.frc.team4343.robot.subsystems.Claw;
 import org.usfirst.frc.team4343.robot.subsystems.DriveTrain;
+import org.usfirst.frc.team4343.robot.subsystems.EncoderTest;
+import org.usfirst.frc.team4343.robot.subsystems.GyroSubsystem;
 import org.usfirst.frc.team4343.robot.subsystems.Lights;
+import org.usfirst.frc.team4343.robot.subsystems.Roller;
 import org.usfirst.frc.team4343.robot.subsystems.Transmission;
 
 /**
@@ -31,10 +43,14 @@ public class Robot extends IterativeRobot {
 	public static final Transmission transmission = new Transmission();
 	public static final Claw claw = new Claw();
 	public static final Lights lights = new Lights();
-	
+	public static final EncoderTest encoderTest = new EncoderTest();
+	public static final GyroSubsystem gyro = new GyroSubsystem();
+	public static final Roller roller = new Roller();
+
 	public static OI oi;
 
 	Command autonomousCommand;
+	SendableChooser autonomousChooser;
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -43,7 +59,14 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		oi = new OI();
 		// instantiate the command used for the autonomous period
-		// autonomousCommand = new ExampleCommand();
+		autonomousChooser = new SendableChooser();
+		autonomousChooser.addDefault("Slow Auto", new Auto());
+		autonomousChooser.addObject("Fast Auto", new FasterAuto());
+		autonomousChooser.addObject("Turn and Go (1 Container and 1 Tote)", new TurnAndGo());
+		autonomousChooser.addObject("Reverse with Container (Any Position)", new ReverseWithContainer());
+		autonomousChooser.addObject("Start Centre Behind Totes", new Middle());
+		autonomousChooser.addObject("ALT", new Alt());
+		SmartDashboard.putData("Autonomous Mode Chooser", autonomousChooser);
 	}
 
 	public void disabledPeriodic() {
@@ -51,9 +74,8 @@ public class Robot extends IterativeRobot {
 	}
 
 	public void autonomousInit() {
-		// schedule the autonomous command (example)
-		if (autonomousCommand != null)
-			autonomousCommand.start();
+		autonomousCommand = (Command) autonomousChooser.getSelected();
+		autonomousCommand.start();
 	}
 
 	/**

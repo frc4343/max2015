@@ -1,4 +1,4 @@
-package org.usfirst.frc.team4343.robot.controls;
+package org.usfirst.frc.team4343.robot.joystick;
 
 /**
  * Controller Axis Mappings

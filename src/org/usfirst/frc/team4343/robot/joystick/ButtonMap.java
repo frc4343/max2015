@@ -2,7 +2,7 @@
  * FRC Team 4343
  * Visit us at www.4343.ca
  */
-package org.usfirst.frc.team4343.robot.controls;
+package org.usfirst.frc.team4343.robot.joystick;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;

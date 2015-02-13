@@ -14,7 +14,8 @@ import edu.wpi.first.wpilibj.command.Command;
  * @author Brian Ho <www.4343.ca>
  */
 public class TransmissionDescend extends Command {
-
+	private boolean done = false;
+	
     public TransmissionDescend() {
         requires(Robot.transmission);
     }
@@ -25,16 +26,23 @@ public class TransmissionDescend extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.transmission.descend();
+    	if (!Robot.transmission.isMinHeight()) {
+    		Robot.transmission.descend();
+    	} else {
+    		Robot.transmission.stop();
+    		done = true;
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return true;
+        return Robot.transmission.isMinHeight() || done;
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.transmission.stop();
+    	done = false;
     }
 
     // Called when another command which requires one or more of the same
