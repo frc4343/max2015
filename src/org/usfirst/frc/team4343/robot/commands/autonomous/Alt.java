@@ -6,7 +6,7 @@ package org.usfirst.frc.team4343.robot.commands.autonomous;
 
 import org.usfirst.frc.team4343.robot.commands.drivetrain.DriveIndefinitely;
 import org.usfirst.frc.team4343.robot.commands.drivetrain.TurnWithGyro;
-import org.usfirst.frc.team4343.robot.commands.gyro.PrintAngle;
+//import org.usfirst.frc.team4343.robot.commands.gyro.PrintAngle;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
@@ -19,7 +19,7 @@ public class Alt extends CommandGroup {
     	addSequential(new DriveIndefinitely(0), 1.0); //grab
     	addSequential(new DriveIndefinitely(-1), 0.8); // reverse 
         addSequential(new TurnWithGyro(0.8, 2.6)); // turn 90
-        addSequential(new PrintAngle()); 
+       // addSequential(new PrintAngle()); 
         addSequential(new DriveIndefinitely(0), .5); //delay
         addSequential(new DriveIndefinitely(-1), 0.4); 
         addSequential(new TurnWithGyro(0.8, -4.2)); // turn 180        

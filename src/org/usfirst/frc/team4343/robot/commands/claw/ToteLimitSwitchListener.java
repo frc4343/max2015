@@ -11,35 +11,31 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class ToteLimitSwitchListener extends Command {
 
-    public ToteLimitSwitchListener() {
-    }
+	public ToteLimitSwitchListener() {
+		requires(Robot.clawLimitSwitch);
+	}
 
-    // Called just before this Command runs the first time
-    protected void initialize() {
-    }
+	// Called just before this Command runs the first time
+	protected void initialize() {
+	}
 
-    // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-    	if (Robot.claw.isToteFullyInClaw()) {
-    		Robot.oi.setRumble(ButtonMap.xbox0, RumbleType.kLeftRumble, true); // activate left rumble
-    		Robot.oi.setRumble(ButtonMap.xbox0, RumbleType.kRightRumble, true); // activate right rumble
-    	} else {
-    		Robot.oi.setRumble(ButtonMap.xbox0, RumbleType.kLeftRumble, false); // deactivate left rumble
-    		Robot.oi.setRumble(ButtonMap.xbox0, RumbleType.kRightRumble, false); // deactivate right rumble
-    	}
-    }
+	// Called repeatedly when this Command is scheduled to run
+	protected void execute() {
+		Robot.oi.setRumble(ButtonMap.xbox0, RumbleType.kLeftRumble, Robot.clawLimitSwitch.isToteFullyInClaw());
+		Robot.oi.setRumble(ButtonMap.xbox0, RumbleType.kRightRumble, Robot.clawLimitSwitch.isToteFullyInClaw());
+	}
 
-    // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-        return false;
-    }
+	// Make this return true when this Command no longer needs to run execute()
+	protected boolean isFinished() {
+		return false;
+	}
 
-    // Called once after isFinished returns true
-    protected void end() {
-    }
+	// Called once after isFinished returns true
+	protected void end() {
+	}
 
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    protected void interrupted() {
-    }
+	// Called when another command which requires one or more of the same
+	// subsystems is scheduled to run
+	protected void interrupted() {
+	}
 }

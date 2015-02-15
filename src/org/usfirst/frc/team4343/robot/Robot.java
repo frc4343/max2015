@@ -4,26 +4,22 @@
  */
 package org.usfirst.frc.team4343.robot;
 
+import org.usfirst.frc.team4343.robot.commands.autonomous.recyclebins.OneReverse;
+import org.usfirst.frc.team4343.robot.commands.autonomous.recyclebins.OneTwoReverse;
+import org.usfirst.frc.team4343.robot.commands.autonomous.recyclebins.TwoOneReverse;
+import org.usfirst.frc.team4343.robot.subsystems.Claw;
+import org.usfirst.frc.team4343.robot.subsystems.ClawLimitSwitch;
+import org.usfirst.frc.team4343.robot.subsystems.DriveTrain;
+import org.usfirst.frc.team4343.robot.subsystems.FrontRollers;
+import org.usfirst.frc.team4343.robot.subsystems.Lights;
+import org.usfirst.frc.team4343.robot.subsystems.Transmission;
+
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
-import org.usfirst.frc.team4343.robot.commands.autonomous.Alt;
-import org.usfirst.frc.team4343.robot.commands.autonomous.Auto;
-import org.usfirst.frc.team4343.robot.commands.autonomous.Middle;
-import org.usfirst.frc.team4343.robot.commands.autonomous.ReverseWithContainer;
-import org.usfirst.frc.team4343.robot.commands.autonomous.TurnAndGo;
-import org.usfirst.frc.team4343.robot.commands.autonomous.FasterAuto;
-import org.usfirst.frc.team4343.robot.subsystems.Claw;
-import org.usfirst.frc.team4343.robot.subsystems.DriveTrain;
-import org.usfirst.frc.team4343.robot.subsystems.EncoderTest;
-import org.usfirst.frc.team4343.robot.subsystems.GyroSubsystem;
-import org.usfirst.frc.team4343.robot.subsystems.Lights;
-import org.usfirst.frc.team4343.robot.subsystems.FrontRollers;
-import org.usfirst.frc.team4343.robot.subsystems.Transmission;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -42,9 +38,8 @@ public class Robot extends IterativeRobot {
 	public static Transmission transmission;
 	public static Claw claw;
 	public static Lights lights;
-	public static EncoderTest encoderTest;
-	public static GyroSubsystem gyro;
 	public static FrontRollers roller;
+	public static ClawLimitSwitch clawLimitSwitch;
 
 	public static OI oi;
 
@@ -61,19 +56,13 @@ public class Robot extends IterativeRobot {
 		transmission = new Transmission();
 		claw = new Claw();
 		lights = new Lights();
-		encoderTest = new EncoderTest();
-		gyro = new GyroSubsystem();
 		roller = new FrontRollers();
+		clawLimitSwitch = new ClawLimitSwitch();
 		oi = new OI();
+		
 		// instantiate the command used for the autonomous period
 		autonomousChooser = new SendableChooser();
-		autonomousChooser.addDefault("Slow Auto", new Auto());
-		autonomousChooser.addObject("Fast Auto", new FasterAuto());
-		autonomousChooser.addObject("Turn and Go (1 Container and 1 Tote)", new TurnAndGo());
-		autonomousChooser.addObject("Reverse with Container (Any Position)",new ReverseWithContainer());
-		autonomousChooser.addObject("Start Centre Behind Totes", new Middle());
-		autonomousChooser.addObject("ALT", new Alt());
-		SmartDashboard.putData("Autonomous Mode Chooser", autonomousChooser);
+		initializeSmartDashboard();
 	}
 
 	public void disabledPeriodic() {
@@ -90,6 +79,7 @@ public class Robot extends IterativeRobot {
 	 */
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
+		log();
 	}
 
 	public void teleopInit() {
@@ -114,6 +104,7 @@ public class Robot extends IterativeRobot {
 	 */
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+		log();
 	}
 
 	/**
@@ -122,4 +113,33 @@ public class Robot extends IterativeRobot {
 	public void testPeriodic() {
 		LiveWindow.run();
 	}
+	
+	/**
+	 * The log method puts interesting information to the SmartDashboard.
+	 */
+    private void log() {
+        transmission.log();
+        driveTrain.log();
+        claw.log();
+    }
+    
+    private void initializeSmartDashboard() {
+		// Reverse with recycling bin
+		autonomousChooser.addDefault("Reverse With 1 Container", new OneReverse());
+		autonomousChooser.addObject("Reverse With 1+2 Container", new OneTwoReverse());
+		autonomousChooser.addObject("Reverse With 2+1 Container", new TwoOneReverse());
+		/*
+		autonomousChooser.addObject("Slow Auto", new Auto());
+		autonomousChooser.addObject("Fast Auto", new FasterAuto());
+		autonomousChooser.addObject("Turn and Go (1 Container and 1 Tote)", new TurnAndGo());
+		autonomousChooser.addObject("Reverse with Container (Any Position)",new ReverseWithContainer());
+		autonomousChooser.addObject("Start Centre Behind Totes", new Middle());
+		autonomousChooser.addObject("ALT", new Alt());
+		autonomousChooser.addObject("1 Conteiner 1 tote", new OneContainerOneTote());
+		autonomousChooser.addObject("2 Conteiner 1 tote", new TwoContainerOneTote());
+		autonomousChooser.addObject("3 tote stack", new PickUpAllTotes());
+		*/
+		//autonomousChooser.addDefault("ENCODER TEST", new DriveTest());
+    	SmartDashboard.putData("Autonomous Mode Chooser", autonomousChooser);
+    }
 }

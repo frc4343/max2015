@@ -18,7 +18,6 @@ public class TurnWithGyro extends Command {
 	private double speed;
 
 	public TurnWithGyro(double speed, double angle) {
-		requires(Robot.gyro);
 		requires(Robot.driveTrain);
 		this.speed = speed;
 		angleToTurnTo = angle;
@@ -31,20 +30,20 @@ public class TurnWithGyro extends Command {
 
 	// Called just before this Command runs the first time (robotInit)
 	protected void initialize() {
-		Robot.gyro.reset(); // zeros the gyro
+		//Robot.driveTrain.resetGyro(); // zeros the gyro
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
 		if (angleToTurnTo < 0) { // if angle is negative
-			if (Robot.gyro.getAngle() > angleToTurnTo) {
+			if (Robot.driveTrain.getHeading()*.03 > angleToTurnTo) {
 				Robot.driveTrain.tankDrive(-speed, 0);
 			} else {
 				Robot.driveTrain.tankDrive(0, 0);
 				finished = true;
 			}
 		} else if (angleToTurnTo > 0) {
-			if (Robot.gyro.getAngle() < angleToTurnTo) {
+			if (Robot.driveTrain.getHeading()*.03 < angleToTurnTo) {
 				Robot.driveTrain.tankDrive(0, -speed);
 			} else {
 				Robot.driveTrain.tankDrive(0, 0);
@@ -52,14 +51,14 @@ public class TurnWithGyro extends Command {
 			}
 		} else { // return to ZERO
 			if (turnRightOrLeftToReturnToZero.equalsIgnoreCase("LEFT")) {
-				if (Robot.gyro.getAngle() > angleToTurnTo) {
+				if (Robot.driveTrain.getHeading()*.03 > angleToTurnTo) {
 					Robot.driveTrain.tankDrive(-speed, 0);
 				} else {
 					Robot.driveTrain.tankDrive(0, 0);
 					finished = true;
 				}
 			} else { // RIGHT
-				if (Robot.gyro.getAngle() < angleToTurnTo) {
+				if (Robot.driveTrain.getHeading()*.03 < angleToTurnTo) {
 					Robot.driveTrain.tankDrive(0, -speed);
 				} else {
 					Robot.driveTrain.tankDrive(0, 0);

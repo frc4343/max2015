@@ -9,8 +9,9 @@ import org.usfirst.frc.team4343.robot.commands.transmission.TransmissionDoNothin
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.SpeedController;
-import edu.wpi.first.wpilibj.Victor;
+import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * Transmission Subsystem
@@ -19,7 +20,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Transmission extends Subsystem {
 	
-	private final SpeedController motor = new Victor(RobotMap.TRANSMISSION_PAIR);
+	private final SpeedController motor = new VictorSP(RobotMap.TRANSMISSION_PAIR);
 	private final DigitalInput maxHeightLimitSwitch = new DigitalInput(RobotMap.MAX_HEIGHT_LIMIT_SWITCH_PORT);
 	private final DigitalInput minHeightLimitSwitch = new DigitalInput(RobotMap.MIN_HEIGHT_LIMIT_SWITCH_PORT);
 	
@@ -63,6 +64,11 @@ public class Transmission extends Subsystem {
      */
     public boolean isMinHeight() {
     	return !minHeightLimitSwitch.get();
+    }
+    
+    public void log() {
+    	SmartDashboard.putBoolean("Transmission Max Height: ", !maxHeightLimitSwitch.get());
+    	SmartDashboard.putBoolean("Transmission Min Height: ", !minHeightLimitSwitch.get());
     }
 }
 

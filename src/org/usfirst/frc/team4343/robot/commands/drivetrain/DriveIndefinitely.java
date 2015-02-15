@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.command.Command;
  * @author Brian Ho <www.4343.ca>
  */
 public class DriveIndefinitely extends Command {
-	double speed;
+	double speed = 0;
 	
     public DriveIndefinitely(double speed) {
         requires(Robot.driveTrain);

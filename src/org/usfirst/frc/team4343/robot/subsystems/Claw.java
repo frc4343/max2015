@@ -5,11 +5,10 @@
 package org.usfirst.frc.team4343.robot.subsystems;
 
 import org.usfirst.frc.team4343.robot.RobotMap;
-import org.usfirst.frc.team4343.robot.commands.claw.ToteLimitSwitchListener;
 
-import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * Pneumatic Claw Subsystem
@@ -19,10 +18,10 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class Claw extends Subsystem {
 
 	private final DoubleSolenoid solenoid = new DoubleSolenoid(RobotMap.PCM_CANID, RobotMap.LEFT_SOLENOID_PORT, RobotMap.RIGHT_SOLENOID_PORT);
-    private final DigitalInput toteFullyInClawLimitSwitch = new DigitalInput(RobotMap.TOTE_FULLY_IN_CLAW_LIMIT_SWITCH_PORT);
-    
+    private boolean isOpen;
+	
     public void initDefaultCommand() {
-        setDefaultCommand(new ToteLimitSwitchListener());
+        //setDefaultCommand(new ClawOpen());
     }
     
     /**
@@ -30,6 +29,7 @@ public class Claw extends Subsystem {
      */
     public void open() {
     	solenoid.set(DoubleSolenoid.Value.kForward);
+    	isOpen = true;
     }
     
     /**
@@ -37,14 +37,11 @@ public class Claw extends Subsystem {
      */
     public void close() {
     	solenoid.set(DoubleSolenoid.Value.kReverse);
+    	isOpen = false;
     }
     
-    /**
-     * 
-     * @return True if tote limit switch is hit
-     */
-    public boolean isToteFullyInClaw() {
-    	return toteFullyInClawLimitSwitch.get();
+    public void log() {
+    	SmartDashboard.putBoolean("Is Claw Set To Close", isOpen);
     }
 }
 
