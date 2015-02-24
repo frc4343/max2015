@@ -20,7 +20,7 @@ public class TwoOneReverse extends CommandGroup {
         
         addParallel(new TransmissionAscend(), 1);
         addSequential(new DriveIndefinitely(-1), 1);
-        addSequential(new TurnWithGyro2(0.5, 120, "RIGHT"));
+        addSequential(new TurnWithGyro2(0.5, 120, false));
         
         addSequential(new DriveIndefinitely(0.8), 0.25);
         
@@ -28,7 +28,7 @@ public class TwoOneReverse extends CommandGroup {
     	addSequential(new TransmissionDescend(), 1);
     	
     	addSequential(new DriveIndefinitely(-0.8), 0.4);
-    	addSequential(new TurnWithGyro2(0.5, 20, "LEFT")); // needs to be 30 degrees robot must turn right though
+    	addSequential(new TurnWithGyro2(0.5, 20, true)); // needs to be 30 degrees robot must turn right though
     	addSequential(new DriveIndefinitely(0.8), 1);
     	addSequential(new DriveIndefinitely(0), 0.5);
         addSequential(new ClawClose());

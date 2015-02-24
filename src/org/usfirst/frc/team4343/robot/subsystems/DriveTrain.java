@@ -74,7 +74,7 @@ public class DriveTrain extends Subsystem {
      * @param y Left, Right Rotation speed 
      */
     public void slowDrive(double x, double y) {
-    	chassis.arcadeDrive(-x/1.5, y/1.2);
+    	chassis.arcadeDrive(-x/1.5, y/1.3);
     	//chassis.arcadeDrive(-(x)/1.7, (y)/1.7);        
         //chassis.arcadeDrive(-(x*x*x)/2, (y*y*y)/2);
     	//chassis.arcadeDrive(-x, y);

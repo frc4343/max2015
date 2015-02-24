@@ -10,13 +10,22 @@ import edu.wpi.first.wpilibj.command.Command;
 public class TurnWithGyro2 extends Command {
 	private double toleranceInDegrees = 1, angleToTurnTo, speed;
 	private boolean isAngleToTurnToReached = false;
-	private String leftRight;
+	private boolean resetGyro = false;
 	
-	public TurnWithGyro2(double speed, double angleToTurnTo, String leftRight) {
+	/**
+	 * Constructor to pass speed and angle to turn to
+	 *  
+	 * @param speed The speed of turn
+	 * @param angleToTurnTo angle to turn to
+	 */
+    public TurnWithGyro2(double speed, double angleToTurnTo, boolean resetGyro) {
+        requires(Robot.driveTrain);
         this.speed = Math.abs(speed); // SPEED NOT VELOCITY, NO NEED FOR DIRECTION
-        this.angleToTurnTo = angleToTurnTo;
-		this.leftRight = leftRight;
-	}
+        this.angleToTurnTo = angleToTurnTo; // DIRECTION DETERMINED BY ANGLE VALUE
+        if (resetGyro) { 
+    		Robot.driveTrain.resetGyro();
+    	}
+    }
 
     // Called just before this Command runs the first time
     protected void initialize() {
@@ -25,12 +34,13 @@ public class TurnWithGyro2 extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	if (!((Robot.driveTrain.getHeading() >= (angleToTurnTo - toleranceInDegrees)) && (Robot.driveTrain.getHeading() <= (angleToTurnTo + toleranceInDegrees)))) {
-    		if (leftRight.equalsIgnoreCase("RIGHT")) {
+    		if (angleToTurnTo > 0) { // if angle is positive
         		Robot.driveTrain.fullSpeedDrive(0, -speed); // robot turns right 
-        	} else {
+        	} else { // angle is negative
         		Robot.driveTrain.fullSpeedDrive(0, speed); // robot turns left
         	}
     	} else { // when angle is achieved
+    		System.out.println("ANGLE ACHIEVED!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
     		Robot.driveTrain.fullSpeedDrive(0, 0); // full stop
     		isAngleToTurnToReached = true;
     	}
