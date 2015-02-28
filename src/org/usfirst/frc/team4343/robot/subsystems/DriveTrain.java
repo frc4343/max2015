@@ -30,9 +30,9 @@ public class DriveTrain extends Subsystem {
 	private final Encoder chassisLeftEncoder = new Encoder(2,3, true, EncodingType.k4X);
 	
     public void initDefaultCommand() {
-    	if (isFirstEnable) {
-    		setDefaultCommand(new ArcadeTriggerDriveWithJoystick());
-    		isFirstEnable = false;
+    	if (isFirstEnable) { // if first enable
+    		setDefaultCommand(new ArcadeTriggerDriveWithJoystick()); // by default set speed to slow drive
+    		isFirstEnable = false; // set first enable to false so when loops again, above line will not be run
     	}
     }
     
@@ -52,7 +52,7 @@ public class DriveTrain extends Subsystem {
 	}
 	
 	/**
-	 * Gets encoder readjng on left side of drivetrain
+	 * Gets encoder reading on left side of drivetrain
 	 * @return
 	 */
 	public double getLeftDistance() {
@@ -75,16 +75,19 @@ public class DriveTrain extends Subsystem {
      */
     public void slowDrive(double x, double y) {
     	chassis.arcadeDrive(-x/1.5, y/1.3);
-    	//chassis.arcadeDrive(-(x)/1.7, (y)/1.7);        
-        //chassis.arcadeDrive(-(x*x*x)/2, (y*y*y)/2);
-    	//chassis.arcadeDrive(-x, y);
     }
     
+    /**
+     * This method resets the right and left encoder counts
+     */
     public void resetEncoders() {
     	chassisLeftEncoder.reset();
 		chassisRightEncoder.reset();
     }
     
+    /**
+     * This method resets the gyro, "zeroes" the gyro
+     */
     public void resetGyro() {
     	gyro.reset();
     }

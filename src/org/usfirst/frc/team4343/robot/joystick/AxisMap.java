@@ -1,3 +1,7 @@
+/*
+ * FRC Team 4343
+ * Visit us at www.4343.ca
+ */
 package org.usfirst.frc.team4343.robot.joystick;
 
 /**

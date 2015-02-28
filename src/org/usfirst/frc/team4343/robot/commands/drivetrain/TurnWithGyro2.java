@@ -1,3 +1,7 @@
+/*
+ * FRC Team 4343
+ * Visit us at www.4343.ca
+ */
 package org.usfirst.frc.team4343.robot.commands.drivetrain;
 
 import org.usfirst.frc.team4343.robot.Robot;
@@ -5,12 +9,13 @@ import org.usfirst.frc.team4343.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * Turn with gyro command
+ * 
+ * @author Brian Ho
  */
 public class TurnWithGyro2 extends Command {
 	private double toleranceInDegrees = 1, angleToTurnTo, speed;
 	private boolean isAngleToTurnToReached = false;
-	private boolean resetGyro = false;
 	
 	/**
 	 * Constructor to pass speed and angle to turn to
@@ -40,7 +45,6 @@ public class TurnWithGyro2 extends Command {
         		Robot.driveTrain.fullSpeedDrive(0, speed); // robot turns left
         	}
     	} else { // when angle is achieved
-    		System.out.println("ANGLE ACHIEVED!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
     		Robot.driveTrain.fullSpeedDrive(0, 0); // full stop
     		isAngleToTurnToReached = true;
     	}

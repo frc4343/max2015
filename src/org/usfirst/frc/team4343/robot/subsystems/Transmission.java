@@ -66,6 +66,9 @@ public class Transmission extends Subsystem {
     	return !minHeightLimitSwitch.get();
     }
     
+    /**
+     * Prints data to smart dashboard
+     */
     public void log() {
     	SmartDashboard.putBoolean("Transmission Max Height: ", !maxHeightLimitSwitch.get());
     	SmartDashboard.putBoolean("Transmission Min Height: ", !minHeightLimitSwitch.get());

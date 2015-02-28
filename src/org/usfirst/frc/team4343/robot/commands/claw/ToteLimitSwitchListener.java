@@ -1,3 +1,7 @@
+/*
+ * FRC Team 4343
+ * Visit us at www.4343.ca
+ */
 package org.usfirst.frc.team4343.robot.commands.claw;
 
 import org.usfirst.frc.team4343.robot.Robot;
@@ -7,7 +11,9 @@ import edu.wpi.first.wpilibj.Joystick.RumbleType;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * Tote limitswitch command
+ * 
+ * @author Brian Ho <www.4343.ca>
  */
 public class ToteLimitSwitchListener extends Command {
 
@@ -21,8 +27,8 @@ public class ToteLimitSwitchListener extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		Robot.oi.setRumble(ButtonMap.xbox0, RumbleType.kLeftRumble, Robot.clawLimitSwitch.isToteFullyInClaw());
-		Robot.oi.setRumble(ButtonMap.xbox0, RumbleType.kRightRumble, Robot.clawLimitSwitch.isToteFullyInClaw());
+		Robot.oi.setRumble(ButtonMap.xbox0, RumbleType.kLeftRumble, Robot.clawLimitSwitch.isToteFullyInClaw()); // shake!
+		Robot.oi.setRumble(ButtonMap.xbox0, RumbleType.kRightRumble, Robot.clawLimitSwitch.isToteFullyInClaw()); // rumble!!
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

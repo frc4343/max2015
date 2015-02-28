@@ -3,8 +3,6 @@ package org.usfirst.frc.team4343.robot.commands.autonomous.recyclebins;
 import org.usfirst.frc.team4343.robot.commands.claw.ClawClose;
 import org.usfirst.frc.team4343.robot.commands.claw.ClawOpen;
 import org.usfirst.frc.team4343.robot.commands.drivetrain.DriveIndefinitely;
-import org.usfirst.frc.team4343.robot.commands.drivetrain.GyroReset;
-import org.usfirst.frc.team4343.robot.commands.drivetrain.TurnWithGyro;
 import org.usfirst.frc.team4343.robot.commands.drivetrain.TurnWithGyro2;
 import org.usfirst.frc.team4343.robot.commands.transmission.TransmissionAscend;
 import org.usfirst.frc.team4343.robot.commands.transmission.TransmissionDescend;
