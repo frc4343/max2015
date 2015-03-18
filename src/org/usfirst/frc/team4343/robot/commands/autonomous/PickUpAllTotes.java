@@ -3,7 +3,7 @@ package org.usfirst.frc.team4343.robot.commands.autonomous;
 import org.usfirst.frc.team4343.robot.commands.claw.ClawClose;
 import org.usfirst.frc.team4343.robot.commands.claw.ClawOpen;
 import org.usfirst.frc.team4343.robot.commands.drivetrain.DriveIndefinitely;
-import org.usfirst.frc.team4343.robot.commands.drivetrain.TurnWithGyro2;
+import org.usfirst.frc.team4343.robot.commands.drivetrain.TurnToAngle;
 import org.usfirst.frc.team4343.robot.commands.transmission.TransmissionAscend;
 import org.usfirst.frc.team4343.robot.commands.transmission.TransmissionDescend;
 

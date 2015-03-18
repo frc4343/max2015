@@ -30,9 +30,9 @@ public class DriveTrain extends Subsystem {
 	private final Encoder chassisLeftEncoder = new Encoder(2,3, true, EncodingType.k4X);
 	
     public void initDefaultCommand() {
-    	if (isFirstEnable) { // if first enable
-    		setDefaultCommand(new ArcadeTriggerDriveWithJoystick()); // by default set speed to slow drive
-    		isFirstEnable = false; // set first enable to false so when loops again, above line will not be run
+    	if (isFirstEnable) {
+    		setDefaultCommand(new ArcadeTriggerDriveWithJoystick());
+    		isFirstEnable = false;
     	}
     }
     
@@ -74,19 +74,17 @@ public class DriveTrain extends Subsystem {
      * @param y Left, Right Rotation speed 
      */
     public void slowDrive(double x, double y) {
-    	chassis.arcadeDrive(-x/1.5, y/1.3);
+    	//chassis.arcadeDrive(-x/1.5, y/1.2);
+    	chassis.arcadeDrive(-x/1.4, y/1.2); // made faster
     }
     
-    /**
-     * This method resets the right and left encoder counts
-     */
     public void resetEncoders() {
     	chassisLeftEncoder.reset();
 		chassisRightEncoder.reset();
     }
     
     /**
-     * This method resets the gyro, "zeroes" the gyro
+     * Zeroes the gyro heading
      */
     public void resetGyro() {
     	gyro.reset();
@@ -105,11 +103,11 @@ public class DriveTrain extends Subsystem {
 	 * The log method puts interesting information to the SmartDashboard.
 	 */
 	public void log() {
-		SmartDashboard.putNumber("Left Distance", chassisLeftEncoder.getDistance());
-		SmartDashboard.putNumber("Right Distance", chassisRightEncoder.getDistance());
+		//SmartDashboard.putNumber("Left Distance", chassisLeftEncoder.getDistance());
+		//SmartDashboard.putNumber("Right Distance", chassisRightEncoder.getDistance());
 		
-		SmartDashboard.putNumber("Left Speed", chassisLeftEncoder.getRate());
-		SmartDashboard.putNumber("Right Speed", chassisRightEncoder.getRate());
+		//SmartDashboard.putNumber("Left Speed", chassisLeftEncoder.getRate());
+		//SmartDashboard.putNumber("Right Speed", chassisRightEncoder.getRate());
 		
 		SmartDashboard.putNumber("Robot Heading", gyro.getAngle());
 	}

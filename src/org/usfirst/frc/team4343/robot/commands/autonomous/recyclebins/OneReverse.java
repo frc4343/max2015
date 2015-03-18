@@ -2,7 +2,7 @@ package org.usfirst.frc.team4343.robot.commands.autonomous.recyclebins;
 
 import org.usfirst.frc.team4343.robot.commands.claw.ClawClose;
 import org.usfirst.frc.team4343.robot.commands.drivetrain.DriveIndefinitely;
-import org.usfirst.frc.team4343.robot.commands.drivetrain.TurnWithGyro2;
+import org.usfirst.frc.team4343.robot.commands.drivetrain.TurnToAngle;
 import org.usfirst.frc.team4343.robot.commands.transmission.TransmissionAscend;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
@@ -18,6 +18,6 @@ public class OneReverse extends CommandGroup {
         
         addParallel(new TransmissionAscend(), 1);
         addSequential(new DriveIndefinitely(-0.8), 1.37);
-        addSequential(new TurnWithGyro2(0.5, 70, false));
+        addSequential(new TurnToAngle(0.5, 70, false));
     }
 }

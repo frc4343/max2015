@@ -1,8 +1,8 @@
 /*
- * FRC Team 4343
- * Visit us at www.4343.ca
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
  */
-package org.usfirst.frc.team4343.robot.commands;
+package org.usfirst.frc.team4343.robot.commands.encoder;
 
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team4343.robot.Robot;

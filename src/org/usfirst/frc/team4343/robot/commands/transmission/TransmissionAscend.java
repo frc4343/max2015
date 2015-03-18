@@ -6,7 +6,6 @@ package org.usfirst.frc.team4343.robot.commands.transmission;
 
 import org.usfirst.frc.team4343.robot.Robot;
 
-import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -49,10 +48,6 @@ public class TransmissionAscend extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	if (DriverStation.getInstance().isOperatorControl()) {
-    		done = false;
-    	} else {
-    		end();
-    	}
+    	end();
     }
 }

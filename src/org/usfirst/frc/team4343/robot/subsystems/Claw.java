@@ -5,7 +5,6 @@
 package org.usfirst.frc.team4343.robot.subsystems;
 
 import org.usfirst.frc.team4343.robot.RobotMap;
-import org.usfirst.frc.team4343.robot.commands.claw.AutomaticallyOpenClawAtEndOfMatch;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -22,7 +21,7 @@ public class Claw extends Subsystem {
     private boolean isOpen;
 	
     public void initDefaultCommand() {
-        setDefaultCommand(new AutomaticallyOpenClawAtEndOfMatch());
+        //setDefaultCommand(new ClawOpen());
     }
     
     /**
@@ -41,9 +40,6 @@ public class Claw extends Subsystem {
     	isOpen = false;
     }
     
-    /**
-     * Prints if claw is open or closed to smart dashboard (approximate, as claw cannot open as fast as the button is pressed)
-     */
     public void log() {
     	SmartDashboard.putBoolean("Is Claw Set To Close", isOpen);
     }

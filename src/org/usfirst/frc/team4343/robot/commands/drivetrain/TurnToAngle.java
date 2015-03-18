@@ -1,7 +1,3 @@
-/*
- * FRC Team 4343
- * Visit us at www.4343.ca
- */
 package org.usfirst.frc.team4343.robot.commands.drivetrain;
 
 import org.usfirst.frc.team4343.robot.Robot;
@@ -9,13 +5,12 @@ import org.usfirst.frc.team4343.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- * Turn with gyro command
- * 
- * @author Brian Ho
+ *
  */
-public class TurnWithGyro2 extends Command {
+public class TurnToAngle extends Command {
 	private double toleranceInDegrees = 1, angleToTurnTo, speed;
 	private boolean isAngleToTurnToReached = false;
+	private boolean resetGyro = false;
 	
 	/**
 	 * Constructor to pass speed and angle to turn to
@@ -23,17 +18,18 @@ public class TurnWithGyro2 extends Command {
 	 * @param speed The speed of turn
 	 * @param angleToTurnTo angle to turn to
 	 */
-    public TurnWithGyro2(double speed, double angleToTurnTo, boolean resetGyro) {
+    public TurnToAngle(double speed, double angleToTurnTo, boolean resetGyro) {
         requires(Robot.driveTrain);
         this.speed = Math.abs(speed); // SPEED NOT VELOCITY, NO NEED FOR DIRECTION
         this.angleToTurnTo = angleToTurnTo; // DIRECTION DETERMINED BY ANGLE VALUE
-        if (resetGyro) { 
-    		Robot.driveTrain.resetGyro();
-    	}
+        this.resetGyro = resetGyro;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	if (resetGyro) { 
+    		Robot.driveTrain.resetGyro();
+    	}
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -45,6 +41,7 @@ public class TurnWithGyro2 extends Command {
         		Robot.driveTrain.fullSpeedDrive(0, speed); // robot turns left
         	}
     	} else { // when angle is achieved
+    		System.out.println("ANGLE ACHIEVED!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
     		Robot.driveTrain.fullSpeedDrive(0, 0); // full stop
     		isAngleToTurnToReached = true;
     	}
