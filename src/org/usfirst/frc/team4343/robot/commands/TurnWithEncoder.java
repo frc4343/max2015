@@ -1,4 +1,4 @@
-package org.usfirst.frc.team4343.robot.commands.encoder;
+package org.usfirst.frc.team4343.robot.commands;
 
 import org.usfirst.frc.team4343.robot.Robot;
 

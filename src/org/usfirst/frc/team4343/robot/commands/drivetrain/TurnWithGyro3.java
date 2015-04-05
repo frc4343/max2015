@@ -7,8 +7,8 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class TurnToAngle extends Command {
-	private double toleranceInDegrees = 1, angleToTurnTo, speed;
+public class TurnWithGyro3 extends Command {
+	private double toleranceInDegrees, angleToTurnTo, speed;
 	private boolean isAngleToTurnToReached = false;
 	private boolean resetGyro = false;
 	
@@ -18,11 +18,17 @@ public class TurnToAngle extends Command {
 	 * @param speed The speed of turn
 	 * @param angleToTurnTo angle to turn to
 	 */
-    public TurnToAngle(double speed, double angleToTurnTo, boolean resetGyro) {
+    public TurnWithGyro3(double speed, double angleToTurnTo, boolean resetGyro) {
         requires(Robot.driveTrain);
         this.speed = Math.abs(speed); // SPEED NOT VELOCITY, NO NEED FOR DIRECTION
         this.angleToTurnTo = angleToTurnTo; // DIRECTION DETERMINED BY ANGLE VALUE
         this.resetGyro = resetGyro;
+        this.toleranceInDegrees = 1;
+    }
+    
+    public TurnWithGyro3(double speed, double angleToTurnTo, boolean resetGyro, double toleranceInDegrees) {
+        this(speed, angleToTurnTo, resetGyro);
+        this.toleranceInDegrees = toleranceInDegrees;
     }
 
     // Called just before this Command runs the first time
@@ -36,13 +42,13 @@ public class TurnToAngle extends Command {
     protected void execute() {
     	if (!((Robot.driveTrain.getHeading() >= (angleToTurnTo - toleranceInDegrees)) && (Robot.driveTrain.getHeading() <= (angleToTurnTo + toleranceInDegrees)))) {
     		if (angleToTurnTo > 0) { // if angle is positive
-        		Robot.driveTrain.fullSpeedDrive(0, -speed); // robot turns right 
+        		Robot.driveTrain.tankDrive(speed, -speed); // robot turns right 
         	} else { // angle is negative
-        		Robot.driveTrain.fullSpeedDrive(0, speed); // robot turns left
+        		Robot.driveTrain.tankDrive(-speed, speed); // robot turns left
         	}
     	} else { // when angle is achieved
     		System.out.println("ANGLE ACHIEVED!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-    		Robot.driveTrain.fullSpeedDrive(0, 0); // full stop
+    		Robot.driveTrain.tankDrive(0, 0); // full stop
     		isAngleToTurnToReached = true;
     	}
     }

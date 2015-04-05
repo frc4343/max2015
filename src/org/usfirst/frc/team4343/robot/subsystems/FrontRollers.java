@@ -20,7 +20,7 @@ public class FrontRollers extends Subsystem {
 	private final SpeedController rightRoller = new Talon(RobotMap.RIGHT_ROLLER_PORT);
 
 	public void initDefaultCommand() {
-		//setDefaultCommand(new RunRollersWithJoystick());
+		setDefaultCommand(new RunRollersWithJoystick());
 	}
 	
 	public void setLeftRoller(double speed) {

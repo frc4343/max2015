@@ -52,7 +52,7 @@ public class DriveTrain extends Subsystem {
 	}
 	
 	/**
-	 * Gets encoder reading on left side of drivetrain
+	 * Gets encoder readjng on left side of drivetrain
 	 * @return
 	 */
 	public double getLeftDistance() {
@@ -74,8 +74,10 @@ public class DriveTrain extends Subsystem {
      * @param y Left, Right Rotation speed 
      */
     public void slowDrive(double x, double y) {
-    	//chassis.arcadeDrive(-x/1.5, y/1.2);
-    	chassis.arcadeDrive(-x/1.4, y/1.2); // made faster
+    	chassis.arcadeDrive(-x/1.25, y/1.2); // was 1.2y
+    	//chassis.arcadeDrive(-(x)/1.7, (y)/1.7);        
+        //chassis.arcadeDrive(-(x*x*x)/2, (y*y*y)/2);
+    	//chassis.arcadeDrive(-x, y);
     }
     
     public void resetEncoders() {
@@ -83,9 +85,6 @@ public class DriveTrain extends Subsystem {
 		chassisRightEncoder.reset();
     }
     
-    /**
-     * Zeroes the gyro heading
-     */
     public void resetGyro() {
     	gyro.reset();
     }
@@ -103,11 +102,11 @@ public class DriveTrain extends Subsystem {
 	 * The log method puts interesting information to the SmartDashboard.
 	 */
 	public void log() {
-		//SmartDashboard.putNumber("Left Distance", chassisLeftEncoder.getDistance());
-		//SmartDashboard.putNumber("Right Distance", chassisRightEncoder.getDistance());
+		SmartDashboard.putNumber("Left Distance", chassisLeftEncoder.getDistance());
+		SmartDashboard.putNumber("Right Distance", chassisRightEncoder.getDistance());
 		
-		//SmartDashboard.putNumber("Left Speed", chassisLeftEncoder.getRate());
-		//SmartDashboard.putNumber("Right Speed", chassisRightEncoder.getRate());
+		SmartDashboard.putNumber("Left Speed", chassisLeftEncoder.getRate());
+		SmartDashboard.putNumber("Right Speed", chassisRightEncoder.getRate());
 		
 		SmartDashboard.putNumber("Robot Heading", gyro.getAngle());
 	}
